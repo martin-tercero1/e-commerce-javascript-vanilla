@@ -1,3 +1,4 @@
+      /* General styles */
       :root {
         --white: #ffffff;
         --black: #000000;
@@ -15,9 +16,7 @@
         margin: 0;
       }
 
-      .inactive {
-        display: none;
-      }
+      /* Navbar General Styles */
 
       nav {
         display: flex;
@@ -75,6 +74,7 @@
       /* .navbar-shopping-cart {
       } */
 
+      /* Desktop Menu */
       .desktop-menu {
         position: absolute;
         top: 60px;
@@ -116,16 +116,65 @@
         font-weight: 500;
       }
 
+      /* Mobile Menu General Styles */
+
+      .mobile-menu {
+        position: absolute;
+        top: 60px;
+        padding: 24px;
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+
+      .mobile-menu a {
+        text-decoration: none;
+        color: var(--black);
+        font-weight: bold;
+      }
+
+      .mobile-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        margin: 24px 0 0;
+      }
+
+      .mobile-menu ul:nth-child(1) {
+        border-bottom: 1px solid var(--very-light-pink);
+      }
+
+      .mobile-menu ul li {
+        margin-bottom: 24px;
+      }
+
+      .mobile-menu .email {
+        font-size: var(--sm);
+        font-weight: 300;
+      }
+
+      .mobile-menu .sign-out {
+        color: var(--hospital-green);
+        font-size: var(--sm);
+      }
+
+      .inactive {
+        display: none;
+      }
+
       @media (max-width: 640px) {
         .menu-icon {
           display: block;
         }
 
-        .navbar-left ul {
+        .navbar-left ul, .navbar-email, .desktop-menu {
           display: none;
         }
+      }
 
-        .navbar-email {
-          display: none;
+      @media (min-width: 641px) {
+        .mobile-menu {
+            display: none;
         }
       }
