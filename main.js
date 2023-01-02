@@ -4,11 +4,14 @@ const mobileMenu = document.querySelector(".mobile-menu");
 const hamburguerMenu = document.querySelector(".menu-icon");
 const cartIcon = document.querySelector(".navbar-shopping-cart");
 const shoppingCart = document.querySelector(".my-order");
+const detailCloseIcon = document.querySelector(".product-detail-close");
 const cardsContainer = document.querySelector(".cards-container");
+const productDetail = document.querySelector(".product-detail");
 
 navbarEmail.addEventListener("click", toggleDesktopMenu);
 hamburguerMenu.addEventListener("click", toggleMobileMenu);
 cartIcon.addEventListener("click", toggleShoppingCart);
+detailCloseIcon.addEventListener("click", closeProductDetails);
 
 function toggleDesktopMenu() {
   if (!shoppingCart.classList.contains("inactive")) {
@@ -21,6 +24,10 @@ function toggleMobileMenu() {
   if (!shoppingCart.classList.contains("inactive")) {
     shoppingCart.classList.toggle("inactive");
   }
+
+  if (!productDetail.classList.contains("inactive")) {
+    productDetail.classList.toggle("inactive");
+  }
   mobileMenu.classList.toggle("inactive");
 }
 
@@ -29,8 +36,24 @@ function toggleShoppingCart() {
     desktopMenu.classList.add("inactive");
   } else if (!mobileMenu.classList.contains("inactive")) {
     mobileMenu.classList.add("inactive");
+  } else if (!productDetail.classList.contains("inactive")) {
+    productDetail.classList.add("inactive");
   }
   shoppingCart.classList.toggle("inactive");
+}
+
+function openProductDetails() {
+  if (!desktopMenu.classList.contains("inactive")) {
+    desktopMenu.classList.add("inactive");
+  } else if (!shoppingCart.classList.contains("inactive")) {
+    shoppingCart.classList.add("inactive");
+  }
+
+  productDetail.classList.remove("inactive");
+}
+
+function closeProductDetails() {
+  productDetail.classList.add("inactive");
 }
 
 const productList = [];
@@ -62,6 +85,7 @@ function renderProducts(arr) {
     const image = document.createElement("img");
     image.classList.add("product-img");
     image.setAttribute("src", product.image);
+    image.addEventListener("click", openProductDetails);
 
     productCard.appendChild(image);
 
